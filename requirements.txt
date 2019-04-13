@@ -84,6 +84,5 @@ wcwidth==0.1.7
 webencodings==0.5.1
 Werkzeug==0.14.1
 widgetsnbextension==3.4.2
-win10toast==0.9
 wrapt==1.11.1
 xlrd==1.2.0

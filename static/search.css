@@ -1,0 +1,132 @@
+body {
+    font-size: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Cantarell', sans-serif;
+}
+#left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 40%;
+}
+#right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 60%;
+}
+#left h1 {
+    font-size: 2rem;
+    margin-top: 10%;
+}
+#left h2 {
+    font-size: 3rem;
+    font-variant: small-caps;
+    width: 80%;
+    margin: 8% auto;
+    padding: 15px;
+    color: rgb(30,30,30);
+    box-shadow: 3px 3px 4px rgb(40,40,40);
+}
+#left h3 {
+    font-size: 1.8rem;
+    width: 80%;
+    margin: auto;
+}
+#left h4 {
+    font-size: 1.8rem;
+    margin: 5% auto 0 auto;
+    width: 80%;
+}
+#left button {
+    font-size: 1.3rem;
+    background-color: rgb(153, 204, 255);
+    width: 60%;
+    margin: 5% auto 0 auto;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 4px 4px 5px;
+}
+#left button:hover {
+    cursor: pointer;
+}
+#left button:active {
+    transform: translate(6px, 2px);
+    box-shadow: 2px 2px 2.5px;
+}
+#left a {
+    text-decoration: none;
+    color: black;
+}
+#plot {
+    width: 80%;
+    height: 50%;
+    margin: 10% auto 5% auto;
+}
+#box {
+    width: 100%;
+    margin: 5% auto;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+#candidates {
+    width: 60%;
+    height: 100%;
+    font-size: 1.2rem;
+}
+#candidates ul {
+    list-style: none;
+    line-height: 2rem;
+}
+#candidates li:hover {
+    background-color: rgb(0,0,77);
+    color: rgb(215,215,215);
+}
+#search {
+    width: 35%;
+    margin: 0 auto 5% auto;
+    height: 55%;
+    border: solid 2px rgb(0,0,77);
+    background-color: rgb(235,235,235);
+    box-shadow: 2px 2px 3px rgb(40,40,40);
+}
+#search p {
+    font-size: 1.5rem;
+}
+#postcodeLookup {
+    font-size: 1.5rem;
+    padding: 5px;
+    text-align: center;
+    display: block;
+    width: 60%;
+    margin: 3% auto;
+    background-color: rgb(0,0,77);
+    color: rgb(215,215,215);
+    text-transform: uppercase;
+}
+#postcodeLookup:focus {
+    background-color: rgb(215,215,215);
+    color: rgb(0,0,77);
+    border: solid 1px rgb(0,0,77);
+}
+#submit {
+    width: 30%;
+    margin: 10% auto 0 auto;
+    font-size: 1.2rem;
+    padding: 5px;
+    display: block;
+    border: solid 1px rgb(0,0,77);
+    box-shadow: 2px 2px 3px rgb(40,40,40);
+}
+#submit:hover {
+    background-color: rgb(0,0,77);
+    color: rgb(215,215,215);
+}
+#submit:active {
+    transform: translate(3px, 1px);
+    box-shadow: 1px 1px 1.5px;
+}

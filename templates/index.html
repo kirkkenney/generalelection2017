@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Election Site</title>
+    <link rel="stylesheet" href="../static/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+        <h1 class="formTitle">{{header}}</h1>
+        <form method="POST" action="{{url_for('search')}}" id=conForm>
+            <input type="text" name="postcode_lookup" id="postcodeLookup">
+            <input type="submit" value='Search...' id='submit'>
+        </form>
+    </div>
+</body>
+</html>

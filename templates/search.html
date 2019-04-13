@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Election Site</title>
+    <link rel="stylesheet" href="../static/search.css">
+    <link rel='stylesheet' href={{cdn_css | safe}} type='text/css' />
+    <link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
+    <script type='text/javascript' src={{cdn_js | safe}}></script>
+</head>
+<body>
+    <div id="left">
+        <h1>Showing results for:</h1>
+        <h2 style="background-color: {{colour_list[0]}}">{{con_result}}</h2>
+        <h3>{{voters_percent}} of eligible voters in {{con_result}} turned up to vote</h3>
+        <h4>{{cand_result[0]}} {{held_ousted}} {{con_result}}</h4>
+        <h4>{{safety}}</h4>
+        <button><a href='{{parliament}}' target='_blank'>See further political biography, including voting record and financial interests for {{winner}}</a></button>
+    </div>
+    <div id="right">
+        <div id="plot">
+            {{script1 | safe}}
+            {{div1 | safe}}
+        </div>
+        <div id="box">
+            <div id="candidates">
+                <ul>
+                    {% for candidate, party, vote in zip %}
+                    <li>{{candidate}} for {{party}}: won {{vote}} of the votes</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id='search'>
+                <p>Search again:</p>
+                <form method="POST" action="{{url_for('search')}}" id=conForm>
+                <input type="text" name="postcode_lookup" id="postcodeLookup">
+                <input type="submit" value='Search...' id='submit'>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

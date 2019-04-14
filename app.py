@@ -6,6 +6,7 @@ from bokeh.embed import components
 from bokeh.resources import CDN
 from bokeh.models import ColumnDataSource
 from unidecode import unidecode
+import logging
 
 data = pd.read_excel('static/election_mapping.xlsx')
 mp_names = pd.read_csv('static/names.csv')
@@ -17,6 +18,8 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     header = 'Enter a postcode to find local results of the 2017 General Election:'
+    platform = request.user_agent.platform
+    app.logger.info(platform)
     return render_template('index.html', header=header)
 
 
@@ -83,16 +86,27 @@ def search():
         parties.append('Other')
         if len(colour_list) < len(party_result):
             colour_list.append('#000000')
-        source = ColumnDataSource(data=dict(parties=parties, votes=vote_list, colours=colour_list))
-        p = figure(x_range=parties, y_range=(0,vote_list[0]), title='2017 General Election Results For %s' % result,
-            toolbar_location=None, tools='', sizing_mode='stretch_both')
-        p.vbar(x='parties', top='votes', width=0.9, color='colours', source=source)
-        p.grid.grid_line_color = None
-        p.title.text_font_size = '20px'
-        p.title.align = 'center'
-        script1, div1 = components(p)
-        cdn_js = CDN.js_files[0]
-        cdn_css = CDN.css_files[0]
+        platform = request.user_agent.platform
+        if platform == 'windows' or platform == 'macos' or platform == 'linux':
+            source = ColumnDataSource(data=dict(parties=parties, votes=vote_list, colours=colour_list))
+            p = figure(x_range=parties, y_range=(0,vote_list[0]), toolbar_location=None,
+            tools='', sizing_mode='stretch_both')
+            p.vbar(x='parties', top='votes', width=0.9, color='colours', source=source)
+            p.grid.grid_line_color = None
+            script1, div1 = components(p)
+            cdn_js = CDN.js_files[0]
+            cdn_css = CDN.css_files[0]
+        else:
+            source = ColumnDataSource(data=dict(parties=parties, votes=vote_list, colours=colour_list))
+            p = figure(x_range=parties, y_range=(0,vote_list[0]), toolbar_location=None,
+            tools='', sizing_mode='scale_both')
+            p.vbar(x='parties', top='votes', width=0.9, color='colours', source=source)
+            p.grid.grid_line_color = None
+            p.title.align = 'center'
+            p.xaxis.major_label_orientation = 'vertical'
+            script1, div1 = components(p)
+            cdn_js = CDN.js_files[0]
+            cdn_css = CDN.css_files[0]
         return render_template('search.html', con_result=result,
         voters_percent=voters_percent, held_ousted=held_ousted, cand_result=cand_result,
         winner=winner, parliament=parliament, safety=safety,
@@ -105,4 +119,4 @@ def search():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')

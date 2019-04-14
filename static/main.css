@@ -1,4 +1,76 @@
 body {
+    font-size: 10px;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Cantarell', sans-serif;
+    background-image: url('cropped.jpg');
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+#container {
+    height: 100%;
+    width: 100%;
+}
+.formTitle {
+    font-size: 2.5em;
+    width: 80%;
+    margin: 35% auto 15% auto;
+    color: rgb(0,0,77);
+    padding: 2px 5px;
+    background-color: rgba(215,215,215,0.6);
+    border-radius: 5px;
+}
+#conForm {
+    margin: 10% auto;
+    width: 80%;
+}
+#postcodeLookup {
+    font-family: inherit;
+    display: block;
+    width: 100%;
+    font-size: 3em;
+    padding: 5px;
+    margin: 25% auto 20% auto;
+    text-align: center;
+    border: solid rgb(0,0,77) 2px;
+    border-radius: 5px;
+    background-color: rgba(215,215,215, 0.8);
+    color: rgb(0,0,77);
+    text-transform: uppercase;
+}
+#postcodeLookup:focus {
+    background-color: rgba(0,0,77, 0.8);
+    color: rgb(215,215,215);
+    border: solid 2px rgb(215,215,215);
+}
+#submit {
+    font-family: inherit;
+    display: block;
+    font-size: 2em;
+    margin: 15% auto;
+    padding: 10px 15px;
+    width: 70%;
+    background-color: rgb(0,0,77);
+    border: solid 1px rgb(215,215,215);
+    border-radius: 5px;
+    color: rgb(215,215,215);
+    box-shadow: 1px 1px 2px rgb(215,215,215);
+}
+#submit:hover {
+    cursor: pointer;
+    background-color: rgb(215,215,215);
+    color: rgb(0,0,77);
+    border: solid 1px rgb(0,0,77);
+}
+#submit:active {
+    transform: translate(4px, 2px);
+}
+
+/* DESKTOP STYLES */
+
+@media only screen and (min-width: 768px) {
+body {
     font-size: 100%;
     overflow: hidden;
     text-align: center;
@@ -13,9 +85,9 @@ body {
     width: 100%;
 }
 .formTitle {
-    font-size: 2.5rem;
+    font-size: 2rem;
     width: 80%;
-    margin: 10% auto 0 auto;
+    margin: 6% auto 0 auto;
     color: rgb(0,0,77);
     padding: 10px 15px;
     background-color: rgba(215,215,215,0.6);
@@ -65,4 +137,5 @@ body {
 }
 #submit:active {
     transform: translate(4px, 2px);
+}
 }
